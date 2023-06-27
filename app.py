@@ -194,7 +194,7 @@ if __name__=='__main__':
                         gr.Textbox(type="text", label='Example text {}'.format(i+1), value=examples_basic[i])
                         #gr.Textbox(type="text", label='Example text {}'.format(i+2), value=examples_basic[i+1])
                     with gr.Row():
-                        load_btn=gr.Button("Load text to the above box")
+                        load_btn=gr.Button("Load texts to the above box")
                         load_btn.click(
                             partial(load_basic, examples_basic[i]),
                             outputs=[textbox1]
