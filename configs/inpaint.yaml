@@ -1,0 +1,31 @@
+dataset:
+  num_views_low_res: 8
+  num_views_high_res: 1
+  image_root_dir: training/mp3d_skybox
+  fov: 90
+  rot_low_res: 45
+  resolution: 256
+
+train:
+  log_dir: sd_upsampler
+  lr: 0.0002
+
+test:
+  fuse_type: single # multidiff
+
+model:
+  guidance_scale: 9.
+  diff_timestep: 1
+  low_res_noise_level: 30 # from the default SD upsampler setting
+  model_type: upsample
+  upsample_model:
+    model_id: stabilityai/stable-diffusion-x4-upscaler
+    num_coarse_cp_blocks: 5
+    lora_layers: True
+    homo_cp_attn: True
+    diff_timestep: 75
+  base_model:
+    diff_timestep: 50
+    model_id: stabilityai/stable-diffusion-2-base
+    lora_layers: True
+    

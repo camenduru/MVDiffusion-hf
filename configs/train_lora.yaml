@@ -1,0 +1,28 @@
+dataset:
+  num_views_low_res: 1
+  num_views_high_res: 1
+  image_root_dir: training/mp3d_skybox
+  fov: 90
+  rot_low_res: 45
+  resolution: 256
+
+train:
+  log_dir: high_res_upsample
+  lr: 0.0002
+
+test:
+  fuse_type: diffcollage # multidiff
+
+model:
+  model_id: stabilityai/stable-diffusion-2-base
+  guidance_scale: 9.
+  diff_timestep: 50
+  model_type: base
+  upsample_model:
+    num_coarse_cp_blocks: 5
+    lora_layers: True
+    homo_cp_attn: True
+  base_model:
+    lora_layers: True
+    single_image_ft: True
+    

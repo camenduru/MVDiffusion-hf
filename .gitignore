@@ -1,0 +1,11 @@
+cache
+*log*
+__pycache__
+.vscode
+*.png
+*.jpg
+*.html
+results
+training
+diffusers
+*.pt

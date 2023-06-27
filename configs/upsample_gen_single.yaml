@@ -1,0 +1,37 @@
+dataset:
+  name: generation
+  num_views_low_res: 8
+  num_views_high_res: 8
+  image_root_dir: logs/tb_logs/test_mp3d_base_mv_all=1/version_1/images
+  resume_dir: logs/tb_logs/test_mp3d_upsample_seperate=2/version_0/images
+  fov: 90
+  rot_low_res: 45
+  rot_high_res: 45
+  resolution: 256
+  resolution_high_res: 1024
+  crop_size_high_res: 1024
+
+train:
+  log_dir: sd_upsampler
+  lr: 0.0002
+
+test:
+  fuse_type: single # multidiff
+
+model:
+  guidance_scale: 9.
+  diff_timestep: 1
+  low_res_noise_level: 50 # from the default SD upsampler setting
+  model_type: upsample
+  upsample_model:
+    model_id: stabilityai/stable-diffusion-x4-upscaler
+    num_coarse_cp_blocks: 5
+    lora_layers: False
+    homo_cp_attn: True
+    diff_timestep: 75
+    multiframe_fuse: False
+  base_model:
+    diff_timestep: 30
+    model_id: stabilityai/stable-diffusion-2-base
+    lora_layers: True
+    
