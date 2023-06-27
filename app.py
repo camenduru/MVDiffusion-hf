@@ -199,6 +199,8 @@ if __name__=='__main__':
                             partial(load_basic, examples_basic[i]),
                             outputs=[textbox1]
                         )
+                    gr.Row()
+                    gr.Row()
             
                 submit_btn.click(
                     partial(generate_basic, acc),
@@ -242,6 +244,8 @@ if __name__=='__main__':
                             partial(load_basic, example),
                             outputs=inputs
                         )
+                    gr.Row()
+                    gr.Row()
                 submit_btn.click(
                     partial(generate_advanced, acc_advanced),
                     inputs=inputs,
@@ -264,4 +268,4 @@ if __name__=='__main__':
             outputs[8].render()
         
     demo.queue()
-    demo.launch()
+    demo.launch(share=True)
