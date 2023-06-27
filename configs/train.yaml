@@ -1,0 +1,35 @@
+dataset:
+  name: 'mp3d'
+  num_views_low_res: 1
+  num_views_high_res: 1
+  image_root_dir: training/mp3d_skybox
+  fov: 90
+  rot_low_res: 45
+  rot_high_res: 10
+  resolution: 512
+  resolution_high_res: 1024
+  crop_size_high_res: 256
+
+train:
+  log_dir: high_res_upsample
+  lr: 0.0002
+
+test:
+  fuse_type: diffcollage # multidiff
+
+model:
+  model_id: stabilityai/stable-diffusion-2-base
+  guidance_scale: 9.
+  model_type: base
+  low_res_noise_level: 20
+  upsample_model:
+    num_coarse_cp_blocks: 5
+    lora_layers: True
+    homo_cp_attn: True
+    diff_timestep: 75
+  base_model:
+    model_id: stabilityai/stable-diffusion-2-base
+    diff_timestep: 50
+    lora_layers: False
+    single_image_ft: True
+    
