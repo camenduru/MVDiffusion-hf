@@ -186,11 +186,11 @@ if __name__=='__main__':
 
             with gr.Row():
                 submit_btn = gr.Button("Generate panorama")
-                clear_btn = gr.Button("Clear all texts")
-                clear_btn.click(
-                    clear,
-                    outputs=inputs+[textbox1]
-                )
+                # clear_btn = gr.Button("Clear all texts")
+                # clear_btn.click(
+                #     clear,
+                #     outputs=inputs+[textbox1]
+                # )
 
             with gr.Accordion("Expand/hide examples") as acc:
                 for i in range(0, len(examples_basic)):
@@ -226,12 +226,12 @@ if __name__=='__main__':
             with gr.Row():
 
                 submit_btn = gr.Button("Generate panorama")
-                clear_btn = gr.Button("Clear all texts")
-                clear_btn.click(
-                    clear,
-                    outputs=inputs+[textbox1],
-                    queue=True,
-                )
+                # clear_btn = gr.Button("Clear all texts")
+                # clear_btn.click(
+                #     clear,
+                #     outputs=inputs+[textbox1],
+                #     queue=True,
+                # )
             with gr.Accordion("Expand/hide examples") as acc_advanced:
                 for i, example in enumerate(examples_advanced):
                     with gr.Row():
@@ -276,4 +276,4 @@ if __name__=='__main__':
             outputs[8].render()
         
     demo.queue()
-    demo.launch()
+    demo.launch(share=True)
