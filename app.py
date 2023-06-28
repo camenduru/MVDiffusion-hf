@@ -163,6 +163,7 @@ if __name__=='__main__':
     inputs=[gr.Textbox(type="text", label='Text{}'.format(i)) for i in range(8)]
 
     with gr.Blocks(css=css) as demo:
+        
         with gr.Row():
             gr.Markdown(
             """
@@ -173,6 +174,12 @@ if __name__=='__main__':
             """
             <center>Text2Pano demonstration: Write a scene you want in Text, then click "Generate panorama". Alternatively, you can load the example text prompts below to populate text-boxes. The advanced mode allows to specify text prompts for each perspective image. It takes 3 minitues to generate one panorama.</center>
             """)
+        with gr.Row():
+             gr.HTML("""
+                <div style='text-align: center; font-size: 30px;'>
+                    <a href='https://mvdiffusion.github.io/'>Project Page</a>
+                </div>
+                """)
         with gr.Tab("Basic"):
             with gr.Row():
                 textbox1=gr.Textbox(type="text", label='Text', value=default_text, elem_id='warning', elem_classes="feedback")
@@ -185,7 +192,7 @@ if __name__=='__main__':
                     outputs=inputs+[textbox1]
                 )
 
-            with gr.Accordion("Example expand/hide") as acc:
+            with gr.Accordion("Expand/hide examples") as acc:
                 for i in range(0, len(examples_basic)):
                     with gr.Row():
                         gr.Image(load_example_img('assets/basic/img{}.png'.format(i+1)), label='example {}'.format(i+1))
@@ -224,7 +231,7 @@ if __name__=='__main__':
                     clear,
                     outputs=inputs+[textbox1]
                 )
-            with gr.Accordion("Example expand/hide") as acc_advanced:
+            with gr.Accordion("Expand/hide examples") as acc_advanced:
                 for i, example in enumerate(examples_advanced):
                     with gr.Row():
                         gr.Image(load_example_img('assets/advanced/img{}.png'.format(i+1)), label='example {}'.format(i+1))
@@ -268,4 +275,4 @@ if __name__=='__main__':
             outputs[8].render()
         
     demo.queue()
-    demo.launch()
+    demo.launch(share=True)
