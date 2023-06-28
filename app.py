@@ -276,4 +276,4 @@ if __name__=='__main__':
             outputs[8].render()
         
     demo.queue()
-    demo.launch()
+    demo.launch(share=True)
