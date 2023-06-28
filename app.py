@@ -176,7 +176,7 @@ if __name__=='__main__':
             """)
         with gr.Row():
              gr.HTML("""
-                <div style='text-align: center; font-size: 30px;'>
+                <div style='text-align: center; font-size: 25px;'>
                     <a href='https://mvdiffusion.github.io/'>Project Page</a>
                 </div>
                 """)
