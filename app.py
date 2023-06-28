@@ -200,12 +200,12 @@ if __name__=='__main__':
                     with gr.Row():
                         gr.Textbox(type="text", label='Example text {}'.format(i+1), value=examples_basic[i])
                         #gr.Textbox(type="text", label='Example text {}'.format(i+2), value=examples_basic[i+1])
-                    with gr.Row():
-                        load_btn=gr.Button("Load texts to the above box")
-                        load_btn.click(
-                            partial(load_basic, examples_basic[i]),
-                            outputs=[textbox1]
-                        )
+                    # with gr.Row():
+                    #     load_btn=gr.Button("Load texts to the above box")
+                    #     load_btn.click(
+                    #         partial(load_basic, examples_basic[i]),
+                    #         outputs=[textbox1]
+                    #     )
                     gr.Row()
                     gr.Row()
             
@@ -229,7 +229,8 @@ if __name__=='__main__':
                 clear_btn = gr.Button("Clear all texts")
                 clear_btn.click(
                     clear,
-                    outputs=inputs+[textbox1]
+                    outputs=inputs+[textbox1],
+                    queue=True,
                 )
             with gr.Accordion("Expand/hide examples") as acc_advanced:
                 for i, example in enumerate(examples_advanced):
@@ -245,12 +246,12 @@ if __name__=='__main__':
                         gr.Textbox(type="text", label='Text 5', value=example[5])
                         gr.Textbox(type="text", label='Text 6', value=example[6])
                         gr.Textbox(type="text", label='Text 7', value=example[7])
-                    with gr.Row():
-                        load_btn=gr.Button("Load text to other text boxes")
-                        load_btn.click(
-                            partial(load_basic, example),
-                            outputs=inputs
-                        )
+                    # with gr.Row():
+                    #     load_btn=gr.Button("Load text to other text boxes")
+                    #     load_btn.click(
+                    #         partial(load_basic, example),
+                    #         outputs=inputs
+                    #     )
                     gr.Row()
                     gr.Row()
                 submit_btn.click(
@@ -275,4 +276,4 @@ if __name__=='__main__':
             outputs[8].render()
         
     demo.queue()
-    demo.launch()
+    demo.launch(share=True)
